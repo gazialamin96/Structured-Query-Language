@@ -1,0 +1,280 @@
+/*
+Creating a Table
+*/
+
+
+
+CREATE TABLE student(
+    student_id INT AUTO_INCREMENT,
+    name VARCHAR(20),
+    major VARCHAR(30),
+    PRIMARY KEY(student_id)
+);
+
+
+DESCRIBE student;
+
+
+DROP TABLE student;
+
+
+ALTER TABLE student ADD cgpa DECIMAL(3,2);
+
+
+ALTER TABLE student DROP cgpa;
+
+
+
+ALTER TABLE student ADD major VARCHAR(50);
+
+ALTER TABLE student DROP major;
+
+
+
+
+/*
+ Inserting data 
+*/
+
+
+
+SELECT * from student;
+
+
+INSERT INTO 
+	student VALUES(1,'GAZI','SOFTWARE ENGINEERING',3.00);
+
+
+INSERT INTO 
+	student VALUES(2,"Al-Amin","CSE",2.84);
+
+
+INSERT INTO 
+	student(student_id,name) VALUES(3, "GAZI");
+INSERT INTO 
+	student(student_id) VALUES(4);
+
+
+INSERT INTO 
+	student(student_id, name, major) VALUES(5, "Arman Hossain", "Autompbile Engineering");
+
+
+INSERT INTO
+	student(name, major,cgpa) VALUES( "Arman Hossain", "Autompbile Engineering",3.20);
+
+
+INSERT INTO
+	student VALUES(1, 'Masud Mahmud', 'Architect',3.40);
+
+INSERT INTO 
+	student VALUES(2, 'Jawad al Hasan', 'BBA',3.80);
+
+INSERT INTO 
+	student VALUES(3, 'Rabbi Mahmud', 'Architect',3.90);
+
+INSERT INTO 
+	student VALUES(5, 'Hasan', 'BBA',3.90);
+
+
+
+
+/*
+Updating Data
+*/
+
+
+
+SELECT * 
+	from student;
+
+
+
+UPDATE student 
+
+	SET major='CSSE',cgpa=3.25
+    WHERE student_id=3;
+ 
+
+
+UPDATE student 
+    
+	SET cgpa=2.70
+    WHERE student_id=4 OR student_id=5;
+ 
+
+UPDATE student
+    
+	SET major='FSIT'
+    
+	WHERE major='CSSE' OR major = 'CSE' OR major = 'SOFTWARE ENGINEERING';
+
+
+
+UPDATE student
+ 
+    SET name='Masud Mahmud'
+    
+     WHERE student_id = 3;
+
+
+
+UPDATE student
+    
+	SET major = 'ATE'
+    
+	WHERE major ='Autompbile Engineering';
+  
+ 
+
+UPDATE student
+    
+	SET cgpa=3.60
+    
+	WHERE student_id=5 OR student_id=6;
+    
+    
+
+UPDATE student 
+    
+	SET name='Mehadi Hasan'
+
+    	WHERE name = 'Hasan';
+ 
+
+
+/*
+Deleting data
+*/
+
+
+
+SELECT * FROM student;
+
+
+
+DELETE FROM 
+	student
+	WHERE student_id=5;
+
+
+
+
+DELETE FROM student
+ 
+   	 WHERE student_id=1 AND name = 'GAZI';
+
+DELETE FROM student
+
+   	 WHERE name = 'Al-Amin';
+
+
+ DELETE FROM student 
+    
+	WHERE cgpa = 3.25;
+
+
+
+/*
+Basic Queris
+*/
+
+
+
+SELECT *  FROM student ;
+  
+
+
+SELECT * 
+    FROM student
+	
+    WHERE name ='Gazi Al-Amin';
+
+
+SELECT * FROM student
+
+	 WHERE student_id = 6;
+
+
+SELECT * FROM student
+	 WHERE cgpa =3.90;
+
+
+SELECT * FROM student 
+
+   	 WHERE cgpa =3.90 AND name = 'Mehadi Hasan';
+
+
+
+SELECT cgpa,name
+    
+	FROM student 
+    
+	WHERE major = 'BBA';
+ 
+
+
+SELECT * 
+	FROM student 
+	ORDER BY student_id DESC;
+ 
+
+
+SELECT * 
+	FROM student 
+
+    	ORDER BY student_id ASC;
+ 
+
+
+SELECT *
+    
+	FROM student 
+    
+	WHERE major = 'BBA' ORDER BY cgpa ASC;
+
+
+
+SELECT *
+    
+	FROM student 
+   
+	WHERE major = 'BBA' 
+    ORDER BY cgpa DESC;
+
+
+
+SELECT *
+    
+	FROM student
+	WHERE major = 'BBA' ORDER BY cgpa ASC
+    LIMIT 2;
+  
+
+
+
+SELECT *
+ 
+	FROM student 
+
+   	WHERE major <> 'BBA' ORDER BY cgpa ASC;
+
+
+
+SELECT *
+ 
+	FROM student 
+	WHERE name IN('Gazi Al-Amin', 'Masud Mahmud') AND student_id >= 1
+    ORDER BY student_id ASC;
+
+
+
+
+/*search not found*/
+
+
+SELECT *
+  
+	FROM student 
+
+        WHERE name IN('radd')
+  ORDER BY cgpa ASC;
